@@ -1,0 +1,2 @@
+C:/Users/fyesr/StudioProjects/yt_download_manager/android/app/.cxx/Debug/5c2zm296/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/fyesr/StudioProjects/yt_download_manager/android/app/.cxx/Debug/5c2zm296/x86_64/CMakeFiles/rebuild_cache.dir
