@@ -40,8 +40,6 @@ class _HomePageState extends State<HomePage> {
     try {
       final videoId = VideoId(url);
       final manifest = await yt.videos.streamsClient.getManifest(videoId);
-
-      // Choose the best stream (muxed, audio, or video only)
       StreamInfo? streamInfo;
 
       if (manifest.muxed.isNotEmpty) {
@@ -58,7 +56,7 @@ class _HomePageState extends State<HomePage> {
         return;
       }
 
-      final file = File('/storage/emulated/0/Download/${videoId.value}.mp4'); // Update the path as needed
+      final file = File('/storage/emulated/0/Download/${videoId.value}.mp4');
       final videoStream = yt.videos.streamsClient.get(streamInfo);
       await videoStream.pipe(file.openWrite());
       print('Download completed!');
@@ -67,13 +65,11 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  // Handle download button press
   _downloadButton() async {
     final url = _urlController.text;
     if (url.isNotEmpty) {
       await fetchMetadata(url);
       await downloadVideo(url);
-      // Clear the text field after download
       _urlController.clear();
     } else {
       print('Please enter a valid URL');
@@ -100,7 +96,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Image(
-                  image: AssetImage(AssetPath.yt_icon), // Make sure this asset is present
+                  image: AssetImage(AssetPath.yt_icon),
                   fit: BoxFit.contain,
                   height: 150,
                   width: 150,
@@ -165,7 +161,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // Bottom navigation bar widget
   Widget _bottomNavigation() {
     return BottomNavigationBar(
       backgroundColor: Colors.white,
